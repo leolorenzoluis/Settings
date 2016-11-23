@@ -1,9 +1,23 @@
 // Place your key bindings in this file to overwrite the defaults
 [
-{ "key": "cmd+;",                "command": "workbench.action.navigateBack" },
-{ "key": "cmd+'",          "command": "workbench.action.navigateForward" },
-{ "key": "cmd+d",                   "command": "editor.action.goToDeclaration"},
-{ "key": "cmd+1",                   "command": "editor.action.previewDeclaration"},
-{ "key": "cmd+2",                   "command": 
-"editor.action.referenceSearch.trigger"}
+    {
+        "key": "cmd+;",
+        "command": "workbench.action.navigateBack"
+    },
+    {
+        "key": "cmd+'",
+        "command": "workbench.action.navigateForward"
+    },
+    {
+        "key": "cmd+d",
+        "command": "editor.action.goToDeclaration"
+    },
+    {
+        "key": "cmd+1",
+        "command": "editor.action.previewDeclaration"
+    },
+    {
+        "key": "cmd+2",
+        "command": "editor.action.referenceSearch.trigger"
+    }
 ]
