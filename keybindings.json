@@ -29,5 +29,35 @@
         "key": "cmd+;",
         "command": "editor.action.outdentLines",
         "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "cmd+]",
+        "command": "workbench.action.navigateForward"
+    },
+    {
+        "key": "ctrl+[",
+        "command": "workbench.action.navigateBack"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "editor.action.goToDeclaration"
+    },
+    {
+        "key": "ctrl+1",
+        "command": "editor.action.previewDeclaration"
+    },
+    {
+        "key": "ctrl+2",
+        "command": "editor.action.referenceSearch.trigger"
+    },
+    {
+        "key": "ctrl+'",
+        "command": "editor.action.indentLines",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+;",
+        "command": "editor.action.outdentLines",
+        "when": "editorTextFocus && !editorReadonly"
     }
 ]
