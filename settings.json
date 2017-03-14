@@ -1,7 +1,12 @@
 // Place your settings in this file to overwrite the default settings
 {
-    "editor.wrappingColumn": 0,
+    "editor.wordWrap": "on",
     "editor.fontFamily": "Fira Code",
     "editor.fontSize": 14,
-    "editor.fontLigatures": true
+    "editor.fontLigatures": true,
+    "tslint.enable": true,
+    "window.zoomLevel": 0,
+    "typescript.check.tscVersion": false,
+    "workbench.colorTheme": "Atom One Dark",
+    "workbench.iconTheme": "vscode-icons"
 }
