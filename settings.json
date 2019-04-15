@@ -1,12 +1,70 @@
 // Place your settings in this file to overwrite the default settings
 {
-    "editor.wordWrap": "on",
-    "editor.fontFamily": "Fira Code",
-    "editor.fontSize": 14,
-    "editor.fontLigatures": true,
-    "tslint.enable": true,
-    "window.zoomLevel": 0,
-    "typescript.check.tscVersion": false,
-    "workbench.colorTheme": "Atom One Dark",
-    "workbench.iconTheme": "vscode-icons"
+  "editor.wordWrap": "on",
+  "editor.fontFamily": "Operator Mono Lig, Fire Code",
+  "editor.fontSize": 14,
+  "editor.fontLigatures": true,
+  "tslint.enable": true,
+  "window.zoomLevel": 0,
+  "workbench.colorTheme": "Oceanic Next (dimmed bg)",
+  "workbench.iconTheme": "vscode-icons",
+  "git.enableSmartCommit": true,
+  "telemetry.enableTelemetry": false,
+  "telemetry.enableCrashReporter": false,
+  "vsicons.projectDetection.autoReload": true,
+  "vsicons.dontShowNewVersionMessage": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "typescript.preferences.quoteStyle": "single",
+  "javascript.preferences.quoteStyle": "single",
+  "prettier.singleQuote": true,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": [
+          //following will be in italic (=FlottFlott)
+          "comment",
+          "emphasis",
+          "entity.other.attribute-name",
+          "entity.other.attribute-name.html",
+          "entity.other.attribute-name.tag.jade",
+          "entity.other.attribute-name.tag.pug",
+        //   "keyword.operator.expression.delete",
+          "entity.name.type.class", //class names
+          "constant.character.format.placeholder",
+        //   "keyword", //import, export, return…
+          "constant", //String, Number, Boolean…, this, super
+        //   "storage.modifier", //static keyword
+          "storage.type.class.js" //class keyword
+        ],
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": [
+          //following will be excluded from italics (VSCode has some defaults for italics)
+          "invalid",
+          "keyword.operator",
+          "constant.numeric.css",
+          "keyword.other.unit.px.css",
+          "constant.numeric.decimal.js",
+          "constant.numeric.json"
+        ],
+        "settings": {
+          "fontStyle": ""
+        }
+      }
+    ]
+  }
 }
