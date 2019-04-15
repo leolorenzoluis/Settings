@@ -33,7 +33,9 @@
       "textMateRules": [
         {
           "scope": [
-            "entity.name.type.interface" // inteface
+            "entity.name.type.interface", // inteface,
+            "meta.type.annotation",
+            "meta.type.parameters"
           ],
 
           "settings": {
@@ -46,6 +48,7 @@
     "textMateRules": [
       {
         "scope": [
+          "meta.type.annotation",
           //following will be in italic (=FlottFlott)
           "comment",
           "emphasis",
@@ -62,7 +65,9 @@
           //   "keyword", //import, export, return…
           "constant", //String, Number, Boolean…, this, super
           //   "storage.modifier", //static keyword
-          "storage.type.class.js" //class keyword
+          "storage.type.class.js", //class keyword,
+          "keyword.control.import",
+          "keyword.control.export"
         ],
         "settings": {
           "fontStyle": "italic"
