@@ -29,6 +29,20 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.tokenColorCustomizations": {
+    "[Oceanic Next (dimmed bg)]": {
+      "textMateRules": [
+        {
+          "scope": [
+            "entity.name.type.interface" // inteface
+          ],
+
+          "settings": {
+            "fontStyle": "italic",
+            "foreground": "#fac863ff"
+          }
+        }
+      ]
+    },
     "textMateRules": [
       {
         "scope": [
@@ -39,12 +53,15 @@
           "entity.other.attribute-name.html",
           "entity.other.attribute-name.tag.jade",
           "entity.other.attribute-name.tag.pug",
-        //   "keyword.operator.expression.delete",
+          //   "keyword.operator.expression.delete",
           "entity.name.type.class", //class names
+          // "entity.name.type",
+          "entity.name.type.interface", // inteface
           "constant.character.format.placeholder",
-        //   "keyword", //import, export, return…
+          "keyword.operator.expression.typeof",
+          //   "keyword", //import, export, return…
           "constant", //String, Number, Boolean…, this, super
-        //   "storage.modifier", //static keyword
+          //   "storage.modifier", //static keyword
           "storage.type.class.js" //class keyword
         ],
         "settings": {
