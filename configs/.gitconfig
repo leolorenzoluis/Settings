@@ -1,0 +1,5 @@
+[user]
+ email = "leolorenzoluis@outlook.com"
+ name = leolorenzoluis
+[includeIf "gitdir:~/Projects/PSI/"]
+ path = .gitconfig-PSI
