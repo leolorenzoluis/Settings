@@ -1,0 +1,250 @@
+mqtt:
+  host: 192.168.1.34
+  port: 1883
+  topic_prefix: frigate
+  client_id: frigate
+  user: homeassistant
+  password: Ozie3yae9yei6vio7cheig8bi8iejeeXohd7ohquohghaeth3oomiowahvie6uph
+  stats_interval: 60
+
+ui:
+  # Optional: Set the default live mode for cameras in the UI (default: shown below)
+  live_mode: webrtc
+  
+environment_vars:
+  LIBVA_DRIVER_NAME: i965
+
+go2rtc:
+  streams:
+    test:
+      - rtsp://test:test123123@192.168.1.150
+      - "ffmpeg:rtsp_cam#audio=opus" # <- copy of the stream which transcodes audio to the missing codec (usually will be opus)
+    front:
+      - onvif://952598:CEPry780@192.168.1.5:5000
+      - "ffmpeg:rtsp_cam#audio=opus" 
+    papa:
+      - onvif://952598:CEPry780@192.168.1.8:5000
+      - "ffmpeg:rtsp_cam#audio=opus" 
+    mama:
+      - onvif://952598:CEPry780@192.168.1.2:5000
+      - "ffmpeg:rtsp_cam#audio=opus" 
+    side:
+      - onvif://952598:CEPry780@192.168.1.7:5000
+      - "ffmpeg:rtsp_cam#audio=opus" 
+  webrtc:
+    candidates:
+      - 192.168.1.34:8555
+
+detectors:
+  coral:
+    type: edgetpu
+    device: usb
+birdseye:
+  enabled: True
+  mode: continuous
+
+ffmpeg:
+  hwaccel_args: preset-vaapi
+
+cameras:
+  front:
+    ffmpeg:
+      inputs:
+        - path: rtsp://127.0.0.1:8554/front?mp4
+          input_args: preset-rtsp-restream
+          roles:
+            - detect
+            - record
+ 
+      output_args:
+        record: -f segment -segment_time 10 -segment_format mp4 -reset_timestamps 1 -strftime 1 -c:v copy -c:a copy
+       
+ 
+    detect:
+      width: 800
+      height: 480
+ 
+    objects:
+      track:
+        - person
+      filters:
+        person:
+          threshold: 0.7
+ 
+    snapshots:
+      enabled: true
+      timestamp: false
+      bounding_box: true
+      retain:
+        default: 3
+ 
+    record:
+      enabled: true
+      retain:
+        days: 3
+        mode: motion
+      events:
+        retain:
+          default: 14
+          mode: active_objects
+    motion:
+      mask:
+        - 314,0,309,31,0,28,0,0,0,0        
+ 
+  papa:
+    ffmpeg:
+      inputs:
+  
+        - path: rtsp://127.0.0.1:8554/papa?mp4
+          roles:
+            - detect
+            - record
+  
+      output_args:
+        record: -f segment -segment_time 10 -segment_format mp4 -reset_timestamps 1 -strftime 1 -c:v copy -c:a copy
+        
+    detect:
+      enabled: false
+      width: 800
+      height: 480
+  
+    objects:
+      track:
+        - person
+      filters:
+        person:
+          threshold: 0.7
+  
+    snapshots:
+      enabled: true
+      timestamp: false
+      bounding_box: true
+      retain:
+        default: 3
+  
+    record:
+      enabled: false
+ 
+  mama:
+    ffmpeg:
+      inputs:
+  
+        - path: rtsp://127.0.0.1:8554/mama?mp4
+          roles:
+            - detect
+            - record
+  
+      output_args:
+        record: -f segment -segment_time 10 -segment_format mp4 -reset_timestamps 1 -strftime 1 -c:v copy -c:a copy
+  
+    detect:
+      enabled: false
+      width: 800
+      height: 480
+  
+    objects:
+      track:
+        - person
+      filters:
+        person:
+          threshold: 0.7
+  
+    snapshots:
+      enabled: true
+      timestamp: false
+      bounding_box: true
+      retain:
+        default: 3
+  
+    record:
+      enabled: false
+  
+    
+
+  side:
+    ffmpeg:
+      inputs:
+  
+        - path: rtsp://127.0.0.1:8554/side?mp4
+          roles:
+            - detect
+            - record
+        
+      output_args:
+        record: -f segment -segment_time 10 -segment_format mp4 -reset_timestamps 1 -strftime 1 -c:v copy -c:a copy
+        
+  
+    detect:
+      width: 800
+      height: 480
+  
+    objects:
+      track:
+        - person
+      filters:
+        person:
+          threshold: 0.7
+  
+    snapshots:
+      enabled: true
+      timestamp: false
+      bounding_box: true
+      retain:
+        default: 3
+  
+    record:
+      enabled: true
+      retain:
+        days: 3
+        mode: motion
+      events:
+        retain:
+          default: 14
+          mode: active_objects
+    motion:
+      mask:
+        - 0,30,298,24,298,0,0,0         
+  
+    
+  test:
+    ffmpeg:
+      inputs:
+        - path: rtsp://127.0.0.1:8554/test
+          input_args: preset-rtsp-restream
+          roles:
+            - detect
+            - record
+ 
+      output_args:
+        record: -f segment -segment_time 10 -segment_format mp4 -reset_timestamps 1 -strftime 1 -c:v copy -c:a copy
+ 
+    detect:
+      enabled: true
+      width: 800
+      height: 480
+ 
+    objects:
+      track:
+        - person
+      filters:
+        person:
+          threshold: 0.7
+ 
+    snapshots:
+      enabled: true
+      timestamp: false
+      bounding_box: true
+      retain:
+        default: 3
+
+    record:
+      enabled: false
+      retain:
+        days: 3
+        mode: motion
+      events:
+        retain:
+          default: 14
+          mode: active_objects
+          
+ 

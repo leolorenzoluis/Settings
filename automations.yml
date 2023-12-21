@@ -1,0 +1,41 @@
+- id: '1703092658086'
+  alias: papa notification
+  description: ''
+  use_blueprint:
+    path: SgtBatten/Stable.yaml
+    input:
+      camera: camera.papa
+      notify_device: 921b949d94130fa1330fc92c018a722f
+      notify_group: ALL_DEVICES
+- id: '1703093093044'
+  alias: front cam notification
+  description: ''
+  use_blueprint:
+    path: SgtBatten/Stable.yaml
+    input:
+      camera: camera.front
+      notify_device: 921b949d94130fa1330fc92c018a722f
+      notify_group: ALL_DEVICES
+      message: A {{ label }} {{ 'is loitering' if loitering else 'was detected' }}
+        on the {{ camera_name }} camera{{ ' in the ' + entered_zones if entered_zones
+        else '.'}}
+      critical: 'true'
+- id: '1703107904237'
+  alias: side detection
+  description: ''
+  use_blueprint:
+    path: SgtBatten/Stable.yaml
+    input:
+      camera: camera.side
+      notify_device: 921b949d94130fa1330fc92c018a722f
+- id: '1703166120945'
+  alias: MAIN GATE NOTIF
+  description: ''
+  use_blueprint:
+    path: SgtBatten/Stable.yaml
+    input:
+      camera: camera.test
+      notify_group: ALL_DEVICES
+      message: MAY TAO NA PUMASOK!
+      color: red
+      notify_device: 921b949d94130fa1330fc92c018a722f
